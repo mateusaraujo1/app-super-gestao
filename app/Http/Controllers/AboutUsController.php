@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class AboutUsController extends Controller
 {
     public function aboutUs() {
-        return view('site.aboutUs');
+        return view('site.aboutus');
     }
 }

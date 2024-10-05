@@ -7,14 +7,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'main']);
 
-Route::get('/about-us', [AboutUsController::class, 'aboutUs']);
+Route::get('/aboutus', [AboutUsController::class, 'aboutUs']);
 
 Route::get('/contact', [ContactController::class, 'contact']);
 
-Route::get('/login', 'teste');
+Route::get('/login', function(){return 'teste'; });
 
-Route::get('/client', 'teste');
+Route::prefix('/app')->group(function(){
+    
+    Route::get('/client', function(){return 'teste'; })->name('app.cliente');
+    Route::get('/provider', function(){return 'teste'; });
+    Route::get('/product', function(){return 'teste'; });
 
-Route::get('/provider', 'teste');
+});
 
-Route::get('/product', 'teste');
+Route::fallback(function() {
+    echo 'A rota acessada não existe, clique <a href="/">aqui</a> para voltar à página inicial';
+});
+
